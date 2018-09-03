@@ -1,0 +1,8 @@
+<div class="container">
+  <input [(ngModel)]="searchRequest" type="text" placeholder="Введите поисковый запрос">
+  <select [(ngModel)]="choiceSystem">
+    <option disabled selected="selected">Выберите поисковую систему</option>
+    <option *ngFor="let system of searchSystems" [value]="system['name']">{{system['name']}}</option>
+  </select>
+  <button (click)="search()">Искать</button>
+</div>
