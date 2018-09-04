@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {TransportDataService} from '../services/transport-data.service';
-
+import {SearchSystem} from '../Interfaces/searchSystem';
 
 
 @Component({
     selector: 'app-search-form',
     templateUrl: './search-form.component.html',
     styleUrls: ['./search-form.component.css'],
-    providers: [TransportDataService]
 })
 export class SearchFormComponent implements OnInit {
 
@@ -15,13 +13,13 @@ export class SearchFormComponent implements OnInit {
 
     public searchRequest: string;
 
-    public searchSystems: Object[] = [
+    public searchSystems: SearchSystem[] = [
         {name: 'Google', url: 'https://www.google.com/search?q='},
         {name: 'Bing', url: 'https://www.bing.com/search?q='},
         {name: 'Ask.com', url: 'https://ask.com/web?q='}
     ];
 
-    constructor(private transport: TransportDataService) {
+    constructor() {
     }
 
     ngOnInit() {
@@ -29,8 +27,7 @@ export class SearchFormComponent implements OnInit {
 
     public search(): void {
         const url = this.searchSystems.filter(system => (system['name'] === this.choiceSystem))[0]['url'];
-        window.location.replace(url + this.searchRequest);
-        console.log(url);
+        window.open(url + encodeURIComponent(this.searchRequest));
     }
 
 }
