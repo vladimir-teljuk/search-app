@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SearchSystem} from '../Interfaces/searchSystem';
+import {SearchSystem} from '../Interfaces/system';
 
 
 @Component({
